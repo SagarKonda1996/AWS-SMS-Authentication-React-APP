@@ -1,0 +1,24 @@
+.app-footer {
+  grid-area: appFooter;
+  z-index: 999;
+  text-align: center;
+  background-color: var(--background-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+  width: 100vw;
+  bottom: 0px;
+}
+
+.link {
+  padding: 0 10px;
+}
+
+.footer-link-container {
+  margin-left: 10px;
+}
+
+.footer-text span{
+  font-size: small;
+}

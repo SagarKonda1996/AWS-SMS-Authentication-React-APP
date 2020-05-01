@@ -1,16 +1,12 @@
 import React,{useState} from 'react'
 import { Auth } from 'aws-amplify';
 
-const LoginUser = ({
-    setUserLoggedIn,
+const Login = ({
+    getLoggedInStatus,
     setCurrentUser,
     currentUser
 }) => {
-    Auth.configure({
-        authenticationFlowType: 'CUSTOM_AUTH',
-        userPoolId: 'ap-south-1_3IBwq1EGT',
-        userPoolWebClientId:'4sr30217an4jhhae4r2am3sljb'
-      })
+    
     const [number, setNumber] = useState('')
     const [answer, setAnswer] = useState('')
     const [name, setName] = useState('')
@@ -18,6 +14,7 @@ const LoginUser = ({
     const getVerificationCode=()=>{
         Auth.signIn(number)
         .then((res)=>{
+            console.log(res)
             setCurrentUser(res)
             setAnswer('')
             setActiveStep('verify')
@@ -32,11 +29,11 @@ const LoginUser = ({
     const verifyCode=()=>{
         Auth.sendCustomChallengeAnswer(currentUser,answer)
         .then((res)=>{
-           setUserLoggedIn(true) 
-           Auth.currentSession()
+            Auth.currentSession()
            .then(res=>{
                if((res.getAccessToken()['jwtToken'])){
                 localStorage.setItem('accessToken',res.getAccessToken()['jwtToken'])
+                getLoggedInStatus()
                }
            })
            .catch(err=>{
@@ -81,10 +78,13 @@ const LoginUser = ({
             {
                stepper()
             }
+            {
+                console.log(currentUser)
+            }
         </div>
     )
 }
 
 
 
-export default LoginUser
+export default Login

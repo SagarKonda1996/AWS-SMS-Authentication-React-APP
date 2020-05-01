@@ -1,0 +1,26 @@
+import Axios from 'axios';
+import { toast } from 'react-toastify';
+
+const axios = Axios.create();
+
+axios.interceptors.request.use(config => {
+  const token = localStorage.getItem('accessToken');
+  // const token=`Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjBiYWJiMjI0NDBkYTAzMmM1ZDAwNDJjZGFhOWQyODVjZjhkMjAyYzQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZGF0YWJhc2UtNTgyODIiLCJhdWQiOiJkYXRhYmFzZS01ODI4MiIsImF1dGhfdGltZSI6MTU4NzM2MDk4OSwidXNlcl9pZCI6Ilo4TGNiOThqUVJPQXFOMnJxZjZ2SkRJZ21BcTEiLCJzdWIiOiJaOExjYjk4alFST0FxTjJycWY2dkpESWdtQXExIiwiaWF0IjoxNTg3MzYwOTkxLCJleHAiOjE1ODczNjQ1OTEsInBob25lX251bWJlciI6Iis5MTkxNjc2OTE1MzQiLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7InBob25lIjpbIis5MTkxNjc2OTE1MzQiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwaG9uZSJ9fQ.ejzcPN7GbHzomcQLo7q1wlyLNUx0pPZwB0pzYsi2MsRgSu73D3n9D6hOSGcmh-x1jm71W9ARzTht8-LIF9FKSH0rxiSLNS63jiQcizbHNZ_zlgdICaY6ko1aOoSncxOxfDxukU7D3nB3aYjYuN-CeDrjXXLUkgs20G0sm-pB8Vaneisk1NPuybc8vMgxGxkm1uFey7FJbt6oZouZ93jbGQ8eX30wJ3ArFPW51jxBvg1J4pxYPoUG0Z-fQ2r0463fEKlYmzt2e-Z2H2u-uvHCsCYUfdD05I6vV2gbrGrTHTUitL57ngOCKavc2NO8_zLR1x1qLZQYCr53is4srlpgow`
+  // const token=`eyJhbGciOiJSUzI1NiIsImtpZCI6IjhjZjBjNjQyZDQwOWRlODJlY2M5MjI4ZTRiZDc5OTkzOTZiNTY3NDAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZGF0YWJhc2UtNTgyODIiLCJhdWQiOiJkYXRhYmFzZS01ODI4MiIsImF1dGhfdGltZSI6MTU4MzkwNDUxNywidXNlcl9pZCI6IlJYSWdEUU5wVTdTTUdNcldRRjBSTGxWa3RNYTIiLCJzdWIiOiJSWElnRFFOcFU3U01HTXJXUUYwUkxsVmt0TWEyIiwiaWF0IjoxNTgzOTA0NTYwLCJleHAiOjE1ODM5MDgxNjAsInBob25lX251bWJlciI6Iis5MTc3MjEwNzMwNzEiLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7InBob25lIjpbIis5MTc3MjEwNzMwNzEiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwaG9uZSJ9fQ.OGnbP6Ob6Tc-7EGmjr9ZWTJ-tYgp5dIj8XN1l5E4l_hSASqbBXeUdTjEtt7gxcz2j7rF0UioNshNaTDSEVnyWQgCP_-Bd9LIvSIqbZcG9s1Z5IFP5PBGNa90W9eZbKVn3uHfvMN9ODbzlg16o0w6BSXAbBJgtxv524Gt-lZJRUcMxQvan7kDWdz0niv2tgw9a37gsKAYT3FYPlNDnEMn0DftbuvcCs7MZFLm6O_soguFC5mxq01WfPRTc4Hrlrnivdg6hA6gcGu3roHFHc3zeXEFlSIOwOFnXjzkqiB3GvSsv2OTwxSDM942AWEppn3RSZK2oExgBpuepeOwfK7u1Q`
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+axios.interceptors.response.use(
+  response => {
+    return response;
+  },
+  error => {
+    toast.info('Request failed. Please check your connection and retry');
+    return Promise.reject(error);
+  }
+);
+
+export default axios;

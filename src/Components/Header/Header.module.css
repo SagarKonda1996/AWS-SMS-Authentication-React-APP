@@ -1,0 +1,148 @@
+.app-header {
+  grid-area: appHeader;
+  display: flex;
+  align-items: center;
+  background-color: var(--background-dark);
+  justify-content: space-between;
+  padding: 0 10px;
+  box-shadow: 0px -11px 7px 9px #000;
+  z-index: 1000000;
+}
+
+.app-header button {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.logo_img {
+  height: 40px;
+}
+
+.header-user-profile {
+  display: flex;
+}
+
+.header-user-profile span {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header-user-profile .fa-user {
+  font-size: 20px;
+  color: #2e3192;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.header-user-profile .fa-sort-down {
+  margin-left: 2px;
+}
+
+.user-profile-popup {
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  margin: 5px 20px;
+  border: solid 1px #ccc;
+  padding: 10px 20px;
+  min-width: 200px;
+  font-size: 14px;
+  top: 40px;
+  z-index: 10000;
+}
+
+.user-profile-popup ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-profile-popup ul li {
+  padding: 5px 0;
+}
+
+.user-profile-popup a {
+  cursor: pointer;
+}
+
+.user-profile-popup a:hover {
+  font-weight: bold;
+  color: #2e3192 !important;
+}
+
+.user-profile-popup a.button-logout {
+  margin-top: 20px;
+}
+
+/*
+.user-profile-popup-userDetails{
+  text-align: right;
+}
+*/
+
+.user-profile-popup-userDetails-name {
+  font-size: 20px;
+}
+
+.icon-container {
+  margin: 0 5px;
+  background-color: #045dbe;
+  padding: 5px 10px;
+  color: white;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.linkContainer{
+  width: 100%;
+  margin-bottom: 4%;
+  display: inline-flex;
+}
+
+.icon-container {
+  background-color: #074e9b;
+}
+
+.copy{
+  background-color: #074e9b !important;
+  color: white !important;
+}
+
+.icon {
+  margin: 0 5px;
+}
+
+.icon-button-text {
+  margin-top: -2px;
+}
+
+.direct_link {
+  background-color: darkgray;
+  padding: 6%;
+  margin-right: 1%;
+  border-radius: 15px;
+  height: 30px;
+  margin-top: 1%;
+  width: 20%;
+  PADDING-TOP: 3%;
+}
+
+/* CSS for Mobile Devices */
+
+@media only screen and (min-width: 328px) and (max-width: 600px) {
+  .icon-button-text {
+    font-size: 0;
+  }
+
+  .user-profile-popup{
+    width: 70% !important;
+  }
+}
+
+/* CSS for Mobile Devices */

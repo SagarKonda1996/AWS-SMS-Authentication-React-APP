@@ -1,0 +1,7 @@
+.app-body {
+  grid-area: appBody;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+}
