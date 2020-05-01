@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import {Auth} from 'aws-amplify'
 Auth.configure({
   authenticationFlowType: 'CUSTOM_AUTH',
-  userPoolId: 'ap-south-1_3IBwq1EGT',
-  userPoolWebClientId:'4sr30217an4jhhae4r2am3sljb'
+  userPoolId: process.env.REACT_APP_user_pool_id,
+  userPoolWebClientId:process.env.REACT_APP_app_client_id
 })
 ReactDOM.render(
     <App />
